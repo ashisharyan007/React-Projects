@@ -17,7 +17,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  })
+  }, []);
 
 
   // Scroll functionality with smooth transition
@@ -25,6 +25,12 @@ const Navbar = () => {
   const handleMenuItemClick = (sectionId) => {
     setActiveSection(sectionId);
     setIsOpen(false);
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    
   }
 
   const menuItems = [
